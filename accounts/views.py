@@ -7,7 +7,7 @@ from .forms import UserCreationForm,UserChangeForm
 
 def HomeView(request):
 
-    return render(request,'test1.html')
+    return render(request,'base.html')
 
 def SignUpView(request):
     context={}
