@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .forms import UserCreationForm,UserChangeForm
+from .forms import UserCreationForm,UserChangeForm,LoginForm
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 
 def HomeView(request):
 
@@ -28,3 +28,26 @@ def SignUpView(request):
     context['signup_form']=UserCreationForm()
 
     return render(request,'accounts/signup.html',context)
+
+
+def LogoutView(request):
+
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect('homepage')
+
+
+def LoginView(request):
+    context={}
+    if request.method=="POST":
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request,user)
+            messages.success(request, 'You are successfully logged in !!!')
+        return redirect('homepage')
+    else:
+        form=LoginForm()
+        context['login_form']=form
+    return render(request,'accounts/login.html',context)

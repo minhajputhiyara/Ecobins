@@ -17,17 +17,6 @@ class UserCreationForm(forms.ModelForm):
         #fields = ('email', )
         fields = '__all__'
         exclude = ('is_active','is_admin','last_login','password')
-        '''
-        widgets = {
-                'username': forms.fields.TextInput(attrs={'placeholder': 'Enter Your Name'}),
-                'email': forms.fields.TextInput(attrs={'placeholder': 'example@gmail.com'}),
-                'institution': forms.fields.TextInput(attrs={'placeholder': 'Your Organization'}),
-                'address': forms.fields.TextInput(attrs={'placeholder': 'Your address'}),
-               # 'password': forms.fields.PasswordInput(attrs={'placeholder': 'Enter Password'}),
-                #'password2': forms.fields.PasswordInput(attrs={'placeholder': 'Your Organization'}),
-
-                }
-        '''
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -80,3 +69,19 @@ class UserChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+
+class LoginForm(forms.ModelForm):
+
+    class Meta:
+        model = MyUser
+        fields=('email','password',)
+
+
+ 
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'form-control','placeholder': 'example@gmail.com'})
+        self.fields['password'].widget.attrs.update({'class': 'form-control','placeholder': 'Your password Here'})
+      

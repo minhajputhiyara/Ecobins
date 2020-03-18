@@ -42,11 +42,11 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us
+              <a class="nav-link" href="">About Us
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us
+              <a class="nav-link" href="">Contact Us
               </a>
             </li>
             {% if user.is_authenticated %}
@@ -54,12 +54,12 @@
               <a id="user" class="nav-link text-warning" href="">Welcome <strong class="h5">{{ user.username }} </strong></a>  
               </li>  
               <li class="nav-item">
-                <a class="nav-link" href="">Log Out
+                <a class="nav-link" href="{% url 'logout' %}">Log Out
                 </a>
               </li>  
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Log In
+              <a class="nav-link" href="{% url 'login' %}">Log In
               </a>
             </li>
             <li class="nav-item">
@@ -79,7 +79,6 @@
     <br>
     
  
-
     {% block content %}
 
 
