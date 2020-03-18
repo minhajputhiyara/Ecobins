@@ -1,9 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import UserCreationForm,UserChangeForm
-# Create your views here.
-
-
-
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
 
 def HomeView(request):
 
@@ -17,6 +15,11 @@ def SignUpView(request):
         if form.is_valid():
 
             form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(email=email, password=raw_password)
+            login(request, user)
+            messages.success(request, 'Your Account Created Successfully')
 
             return redirect('homepage')
 
@@ -24,4 +27,4 @@ def SignUpView(request):
     
     context['signup_form']=UserCreationForm()
 
-    return render(request,'test2.html',context)
+    return render(request,'accounts/signup.html',context)

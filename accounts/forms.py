@@ -17,6 +17,34 @@ class UserCreationForm(forms.ModelForm):
         #fields = ('email', )
         fields = '__all__'
         exclude = ('is_active','is_admin','last_login','password')
+        '''
+        widgets = {
+                'username': forms.fields.TextInput(attrs={'placeholder': 'Enter Your Name'}),
+                'email': forms.fields.TextInput(attrs={'placeholder': 'example@gmail.com'}),
+                'institution': forms.fields.TextInput(attrs={'placeholder': 'Your Organization'}),
+                'address': forms.fields.TextInput(attrs={'placeholder': 'Your address'}),
+               # 'password': forms.fields.PasswordInput(attrs={'placeholder': 'Enter Password'}),
+                #'password2': forms.fields.PasswordInput(attrs={'placeholder': 'Your Organization'}),
+
+                }
+        '''
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form-control','placeholder': 'Your name'})
+        self.fields['email'].widget.attrs.update({'class': 'form-control','placeholder': 'example@gmail.com'})
+        self.fields['institution'].widget.attrs.update({'class': 'form-control','placeholder': 'Your Organization'})
+        self.fields['contact'].widget.attrs.update({'class': 'form-control','placeholder': '+8801'})
+        self.fields['account_type'].widget.attrs.update({'class': 'form-control','placeholder': 'Enter password'})
+        self.fields['address'].widget.attrs.update({ 'rows':3, 'class': 'form-control','placeholder': '23/B Najrul Islam Avenue,Dhaka,Bangladesh'})
+        self.fields['password1'].widget.attrs.update({'class': 'form-control','placeholder': 'Enter password'})
+        self.fields['password2'].widget.attrs.update({'class': 'form-control','placeholder': 'Re-password'})
+
+        
+
+        
+
+
 
     def clean_password2(self):
         # Check that the two password entries match
