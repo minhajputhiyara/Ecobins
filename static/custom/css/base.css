@@ -3,7 +3,11 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
+.service-block {
+  position: relative; }
 
+a#user strong {
+  font-size: 20px !important; }
 
 body {
   padding-top: 54px; }

@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Baloo+2:400,500,600&display=swap" rel="stylesheet">
     <!-- font-family: 'Baloo 2', cursive; -->
     <!-- Custom styles for this template -->
-    <link href="{% static "cucstom/css/base.css" %}" rel="stylesheet">
+    <link href="{% static 'cucstom/css/base.css' %}" rel="stylesheet">
     
     {%block CSS %}
     {% endblock CSS %}
@@ -141,6 +141,76 @@
           </div>
           <!-- /.container -->
     </div>
+
+
+    <div class="sercive-block">
+        <!-- Service section -->
+      <!-- Header -->
+<header class="text-center py-3 mb-4">
+  <div class="container">
+    <h1 class="font-weight-light text-white"> Our Services</h1>
+  </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Service 1 -->
+
+    <div class="col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <a href="{% url 'upload_garbage' %}"> 
+          <img src="{% static 'custom/image/sellWaste.jpg'%}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h4 class="card-title mb-0">Sell Garbage</h4>
+ 
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- Service 2 -->
+    <div class="col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <a href=""> 
+          <img src="{%static 'custom/image/cleaningTeam.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h4 class="card-title mb-0">Waste Disposal/Cleaning Team</h4>
+ 
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- Service 3 -->
+    <div class="col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <a href=""> 
+          <img src="{% static 'custom/image/buyWaste.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h4 class="card-title mb-0">Buy Waste</h4>
+ 
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- Service 4 -->
+    <div class="col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <a href=""> 
+          <img src="{% static 'custom/image/CleaningKit.png' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h4 class="card-title mb-0">Cleaning Kit</h4>
+ 
+          </div>
+        </a>
+      </div>
+    </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+    <!-- End service section -->
+    </div>
+
     {% endblock content %}
 
     <!-- Footer -->
