@@ -5,7 +5,7 @@ from .models import GarbageCategory,Garbage
 #this is to customize garbage admin model display
 class GarbageAdmin(admin.ModelAdmin):
 
-    list_display = ['__str__', 'slug',]
+    list_display = ['__str__', 'slug','status','weight','price']
 
     class Meta:
         model=Garbage

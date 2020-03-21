@@ -33,7 +33,7 @@ def SignUpView(request):
 def LogoutView(request):
 
     logout(request)
-    messages.info(request, "Logged out successfully!")
+    messages.add_message(request, messages.SUCCESS,  'Logged Out Successfully thnaks for beign with us')
     return redirect('homepage')
 
 
@@ -45,7 +45,7 @@ def LoginView(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request,user)
-            messages.success(request, 'You are successfully logged in !!!')
+            messages.add_message(request, messages.SUCCESS,  'You are successfully logged in !!!')
         return redirect('homepage')
     else:
         form=LoginForm()

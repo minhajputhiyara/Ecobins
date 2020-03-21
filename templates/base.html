@@ -51,7 +51,7 @@
             </li>
             {% if user.is_authenticated %}
               <li> 
-              <a id="user" class="nav-link text-warning" href="">Welcome <strong class="h5">{{ user.username }} </strong></a>  
+              <a id="user" class="nav-link text-warning" href=""> <strong class="h5"><i class="fa fa-user"></i> {{ user.username }} </strong></a>  
               </li>  
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Log Out
@@ -91,7 +91,7 @@
                   {% if messages %}
                     {% for message in messages %}
                 
-                      <div class="alert alert-success text-center messages" role="alert">
+                      <div class="alert alert-{{message.tags}} text-center messages" role="alert">
                         {{ message }}
                       </div>
                     {% endfor %}
@@ -154,7 +154,7 @@
 
 <!-- Page Content -->
 <div class="container">
-  <div class="row">
+  <div class="row service_block">
     <!-- Service 1 -->
 
     <div class="col-md-6 mb-4">

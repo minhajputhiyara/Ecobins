@@ -6,6 +6,9 @@
 .service-block {
   position: relative; }
 
+h4 {
+  color: green; }
+
 a#user strong {
   font-size: 20px !important; }
 

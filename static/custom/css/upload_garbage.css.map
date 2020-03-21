@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAEA,eAAe;EACX,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,GAAG",
+"mappings": "AAGA,eACA;EACI,KAAK,EAAC,KAAK",
 "sources": ["../scss/upload_garbage.scss"],
 "names": [],
 "file": "upload_garbage.css"

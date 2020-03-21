@@ -48,7 +48,11 @@ class Garbage(models.Model):
     def save(self, *args, **kwargs):
         new_image = compress(self.image)
         self.image = new_image
-        super().save(*args, **kwargs)
+        super(Garbage,self).save(*args, **kwargs)
+
+    
+    def __str__(self):
+        return "{}".format(self.name)
     
 
     
