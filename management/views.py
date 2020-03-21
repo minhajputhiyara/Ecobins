@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import ProductUploadForm
 
 from .models import Garbage
-
+from accounts.models import MyUser
 
 
 @login_required
@@ -38,3 +38,16 @@ def DisplayWasteView(request):
     context['garbages']=active_garbages
     context['loop_times'] = range(1, 4)
     return render(request,'display_waste.html',context)
+
+
+
+def BuyGarbageView(request,slug=None,id=None):
+
+    context=dict()
+    garbage=Garbage.objects.get(pk=id)
+    owner=MyUser.objects.get(pk=garbage.uploaded_by)
+    garbage.status=False
+    garbage.save()
+    context['garbage']=garbage
+    context['owner']=owner
+    return render(request,'garbage_buy.html',context)
