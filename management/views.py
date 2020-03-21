@@ -27,3 +27,14 @@ def UploadGarbageView(request):
         form=ProductUploadForm()
         context['upload_form']=form
     return render(request,'publish_waste.html',context)
+
+
+#display all garbage view is here
+
+def DisplayWasteView(request):
+
+    context=dict()
+    active_garbages=Garbage.objects.filter(status=True)
+    context['garbages']=active_garbages
+    context['loop_times'] = range(1, 4)
+    return render(request,'display_waste.html',context)
