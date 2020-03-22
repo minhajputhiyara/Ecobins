@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ProductUploadForm
 
-from .models import Garbage
+from .models import Garbage,Cleaner
 from accounts.models import MyUser
 
 
@@ -33,6 +33,13 @@ def UploadGarbageView(request):
 
 def DisplayWasteView(request):
 
+    if not request.user.is_authenticated:
+        messages.add_message(request,messages.ERROR,'please login first')
+        return redirect('homepage')
+
+    if 1==request.user.account_type:
+        messages.add_message(request, messages.ERROR,  'Your Account is Seller type please create a Buyer type Account to Buy Garbage')
+        return redirect('homepage') 
     context=dict()
     active_garbages=Garbage.objects.filter(status=True)
     context['garbages']=active_garbages
@@ -40,7 +47,7 @@ def DisplayWasteView(request):
     return render(request,'display_waste.html',context)
 
 
-
+@login_required
 def BuyGarbageView(request,slug=None,id=None):
 
     context=dict()
@@ -51,3 +58,24 @@ def BuyGarbageView(request,slug=None,id=None):
     context['garbage']=garbage
     context['owner']=owner
     return render(request,'garbage_buy.html',context)
+
+
+@login_required
+def CleanerView(request):
+    context=dict()
+    cleaners=Cleaner.objects.all()
+
+    times=range(1,5)
+    context['cleaners']=cleaners
+    context['loop_times']=times
+
+
+    return render(request,'cleaner.html',context)
+
+@login_required
+def CleanerDetailView(request,id=None):
+    
+    context=dict()
+    cleaner=Cleaner.objects.get(pk=id)
+    context['cleaner']=cleaner
+    return render(request,'cleaner_details.html',context)

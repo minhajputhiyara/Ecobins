@@ -16,5 +16,4 @@ class ProductUploadForm(forms.ModelForm):
         super(ProductUploadForm,self).__init__(*args,**kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form-control','placeholder': 'Garbage Name'})
         self.fields['desc'].widget.attrs.update({ 'rows':3, 'class': 'form-control','placeholder': 'Garbage description'})
-        self.fields['price'].widget.attrs.update({'class': 'form-control',})
         self.fields['weight'].widget.attrs.update({'class': 'form-control','placeholder': 'Approximate Weight Garbage Ex: 500kg Pape'})

@@ -15,6 +15,26 @@ def compress(image):
     return new_image
 
 
+class Cleaner(models.Model):
+    name=models.CharField(max_length=255,blank=False)
+    desc=models.TextField(blank=True)
+    cleaning_task=models.CharField(max_length=255)
+    contact=models.CharField(max_length=255,blank=False)
+    price=models.FloatField(blank=False,default=0.00)
+    address=models.TextField(blank=False)
+    image=models.ImageField(upload_to='cleaner/')
+    class Meta:
+        verbose_name_plural = "Cleaners"
+    def __str__(self):
+        return self.name
+
+    def save(self,*args,**kwargs):
+        new_image = compress(self.image)
+        self.image = new_image
+        super(Cleaner,self).save(*args,**kwargs)
+
+
+
 class GarbageCategory(models.Model):
     name=models.CharField(max_length=255,blank=False)
     desc=models.TextField(blank=True)
@@ -37,9 +57,8 @@ class Garbage(models.Model):
     name=models.CharField(max_length=255,blank=False)
     desc=models.TextField(blank=False)
     status=models.BooleanField(default=False)
-    price=models.FloatField(blank=False,default=0.00)
     weight=models.PositiveIntegerField(blank=True) 
-    image=models.ImageField(upload_to='garbage_product')
+    image=models.ImageField(upload_to='garbage_product/')
     categoy=models.ForeignKey(GarbageCategory,on_delete=models.CASCADE)
     slug=models.SlugField(blank=True,unique=True)
     uploaded_by=models.IntegerField(default=0)

@@ -2,7 +2,8 @@
 from django.contrib import admin
 from django.urls import path,include
 from accounts.views import HomeView,SignUpView
-from management.views import UploadGarbageView,DisplayWasteView,BuyGarbageView
+from management.views import (UploadGarbageView,DisplayWasteView,
+        BuyGarbageView,CleanerView,CleanerDetailView)
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -15,6 +16,8 @@ urlpatterns = [
     path('upload_garbage/',UploadGarbageView,name='upload_garbage'),
     path('display_garbage/',DisplayWasteView,name='display_garbage'),
     path('buy_garbage/<slug:slug>/<int:id>/',BuyGarbageView,name='buy_garbage'),
+    path('cleaner/',CleanerView,name='cleaner'),
+    path('cleaner_details/<int:id>/',CleanerDetailView,name='cleaner_details'),
 ]
 
 if settings.DEBUG:
