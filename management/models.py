@@ -22,7 +22,7 @@ class Cleaner(models.Model):
     contact=models.CharField(max_length=255,blank=False)
     price=models.FloatField(blank=False,default=0.00)
     address=models.TextField(blank=False)
-    image=models.ImageField(upload_to='cleaner/')
+    image=models.ImageField(upload_to='')
     class Meta:
         verbose_name_plural = "Cleaners"
     def __str__(self):
@@ -58,7 +58,7 @@ class Garbage(models.Model):
     desc=models.TextField(blank=False)
     status=models.BooleanField(default=False)
     weight=models.PositiveIntegerField(blank=True) 
-    image=models.ImageField(upload_to='garbage_product/')
+    image=models.ImageField(upload_to='')
     categoy=models.ForeignKey(GarbageCategory,on_delete=models.CASCADE)
     slug=models.SlugField(blank=True,unique=True)
     uploaded_by=models.IntegerField(default=0)

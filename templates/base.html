@@ -12,8 +12,8 @@
     <title>Crow Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static "vendor/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Font awsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css' integrity='sha384-URtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/' crossorigin='anonymous'>
@@ -51,7 +51,7 @@
             </li>
             {% if user.is_authenticated %}
               <li> 
-              <a id="user" class="nav-link text-warning" href=""> <strong class="h5"><i class="fa fa-user"></i> {{ user.username }} </strong></a>  
+              <a id="user" class="nav-link text-warning" href="{% url 'profile' user.id %}"> <strong class="h5"><i class="fa fa-user"></i> {{ user.username }} </strong></a>  
               </li>  
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Log Out

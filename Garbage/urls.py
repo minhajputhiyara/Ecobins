@@ -14,6 +14,7 @@ urlpatterns = [
     path('',HomeView,name='homepage'),
     path('accounts/',include('accounts.urls')),
     path('upload_garbage/',UploadGarbageView,name='upload_garbage'),
+    path('upload_garbage/<int:id>/',UploadGarbageView,name='upload_garbage'),
     path('display_garbage/',DisplayWasteView,name='display_garbage'),
     path('buy_garbage/<slug:slug>/<int:id>/',BuyGarbageView,name='buy_garbage'),
     path('cleaner/',CleanerView,name='cleaner'),

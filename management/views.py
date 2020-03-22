@@ -8,23 +8,39 @@ from accounts.models import MyUser
 
 
 @login_required
-def UploadGarbageView(request):
+def UploadGarbageView(request,id=None):
 
     context=dict()
     if request.method=="POST":
         form=ProductUploadForm(request.POST,request.FILES)
-        if form.is_valid():
-            obj=form.save(commit=False)
-            obj.uploaded_by=request.user.id
-            obj.save()
-            messages.add_message(request, messages.SUCCESS,  'Your Waste Posted successfully it will be published after acknowledgement')
+
+        if id!=None:
+            garbag=Garbage.objects.get(pk=id)
+            form=ProductUploadForm(request.POST,request.FILES,instance=garbag)
+
+            if form.is_valid():
+                form.save()
+                messages.add_message(request,messages.SUCCESS,'your garbage updated successfully')
+                
+        else:
+            if form.is_valid():
+                obj=form.save(commit=False)
+                obj.uploaded_by=request.user.id
+                obj.save()
+                messages.add_message(request, messages.SUCCESS,  'Your Waste Posted successfully it will be published after acknowledgement')
         return redirect('homepage')
 
     else:
         if 2==request.user.account_type:
             messages.add_message(request, messages.ERROR,  'Your Account is Buyer type please create a seller type Account')
             return redirect('homepage')
-        form=ProductUploadForm()
+
+        if id!=None:
+            garbag=Garbage.objects.get(pk=id)
+            form=ProductUploadForm(instance=garbag)
+        else:
+            form=ProductUploadForm()
+
         context['upload_form']=form
     return render(request,'publish_waste.html',context)
 
