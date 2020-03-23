@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import  MyUser
 from management.views import Garbage
 from management.forms import ProductUploadForm
+from management.models import GarbageOrder
 
 def HomeView(request):
 
@@ -16,10 +17,9 @@ def HomeView(request):
 def SignUpView(request,id=None):
     context={}
     if request.method=="POST":
-        form = UserCreationForm(request.POST)
         if id!=None:
             myuser=MyUser.objects.get(pk=id)
-            form=ProductUploadForm(request.POST,instance=myuser)
+            form=UserCreationForm(request.POST,instance=myuser)
             if form.is_valid():
                 form.save()
                 messages.add_message(request, messages.SUCCESS,  'Your Profile Updated Successfully')
@@ -28,7 +28,8 @@ def SignUpView(request,id=None):
                 messages.add_message(request, messages.ERROR,  'Update data is not valid')
                 return redirect('homepage')
 
-        else:    
+        else:
+            form=UserCreationForm(request.POST)   
             if form.is_valid():
                 form.save()
                 email = form.cleaned_data.get('email')
@@ -37,15 +38,17 @@ def SignUpView(request,id=None):
                 login(request, user)
                 messages.success(request, 'Your Account Created Successfully')
                 return redirect('homepage')
+            
+            else:
+                messages.add_message(request,messages.ERROR,'can not create account info you provided is not unique')
+                return redirect('homepage')
 
     else:
         if id!=None:
             myuser=MyUser.objects.get(id=id)
-            '''
-            print(myuser.username)
-            print(myuser)
-            print(myuser.email)
-            '''
+
+                # print(myuser)
+        
             form=UserCreationForm(instance=myuser)
             context['signup_form']=form
         else:
@@ -87,13 +90,30 @@ def ProfileView(request,id=None):
     if myuser.account_type==1:
         garbages=Garbage.objects.filter(uploaded_by=id)
         context['garbages']=garbages
+    else:
+
+        order_list=GarbageOrder.objects.filter(ordered_by=id)
+       # context['ordered_garbage']=order_list
+        context['abc']=order_list
+
     return render(request,'accounts/user_profile.html',context)
 
-@login_required
 
+@login_required
 def DeleteGarbageView(request,id=None):
     
     instance = Garbage.objects.get(pk=id)
     instance.delete()
     messages.add_message(request, messages.ERROR,  'Your Garbage deleted !!!')
+    return redirect('homepage')
+
+
+@login_required
+def DeleteGarbageOrderView(request,buyer_id=None,garbage_id=None):
+
+    obj=Garbage.objects.get(pk=garbage_id)
+
+    instance=GarbageOrder.objects.get(ordered_by=buyer_id,ordered_garbage=obj)
+    instance.delete()
+    messages.add_message(request, messages.ERROR,  'Your Ordered deleted Successfully !!!')
     return redirect('homepage')

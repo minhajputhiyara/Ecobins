@@ -74,6 +74,15 @@ class Garbage(models.Model):
         return "{}".format(self.name)
     
 
+class GarbageOrder(models.Model):
+    ordered_by=models.IntegerField(blank=False)
+    ordered_garbage=models.ForeignKey(Garbage,on_delete=models.CASCADE)
+
+    def __str__(self):
+
+        return "order by {}".format(self.ordered_by)
+
+
     
 def garbage_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:

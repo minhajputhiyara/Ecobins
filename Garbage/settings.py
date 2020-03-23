@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #custom apps
     'accounts',
     'management',
+    'django_cleanup',
 ]
 AUTH_USER_MODEL = 'accounts.MyUser'
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (GarbageCategory,Garbage
-    ,Cleaner)
+    ,Cleaner,GarbageOrder)
 
 
 #this is to customize garbage admin model display
@@ -17,6 +17,9 @@ class CleanerAdmin(admin.ModelAdmin):
 
     class Meta:
         model=Cleaner
+
+
 admin.site.register(Cleaner,CleanerAdmin)
 admin.site.register(Garbage,GarbageAdmin)
 admin.site.register(GarbageCategory)
+admin.site.register(GarbageOrder)

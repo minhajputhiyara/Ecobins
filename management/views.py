@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ProductUploadForm
 
-from .models import Garbage,Cleaner
+from .models import Garbage,Cleaner,GarbageOrder
 from accounts.models import MyUser
 
 
@@ -71,6 +71,11 @@ def BuyGarbageView(request,slug=None,id=None):
     owner=MyUser.objects.get(pk=garbage.uploaded_by)
     garbage.status=False
     garbage.save()
+
+    obj=Garbage.objects.get(pk=id)
+    if  GarbageOrder.objects.filter(ordered_by=request.user.id,ordered_garbage=obj).count()==0:
+        GarbageOrder.objects.create(ordered_by=request.user.id,ordered_garbage=obj)
+
     context['garbage']=garbage
     context['owner']=owner
     return render(request,'garbage_buy.html',context)
