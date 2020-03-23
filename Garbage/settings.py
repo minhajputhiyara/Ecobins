@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #custom apps
     'accounts',
     'management',
+    'cleaning_kit',
     'django_cleanup',
 ]
 AUTH_USER_MODEL = 'accounts.MyUser'

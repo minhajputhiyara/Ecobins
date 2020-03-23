@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'custom/css/buy_kit.css' %}">
+{% endblock CSS%}
+
+
+{% block content %}
+<div class="product_buy my-4 container">
+	
+	<div class="card my-5">
+		<div class="row order-form">
+			<div class="col-md-4 offset-md-1 my-2">
+			 	<img src="{{kit.image.url}}" alt="..." class="img-thumbnail">
+				<h3 class="text-center text-info mt-2">{{kit.name}}</h3>
+				<h5 class="text-center text-danger">Price {{kit.price}}</h5>
+				<h5 class="text-info">Description</h5>
+				<p class="bs-example">{{kit.desc}}</p>
+			</div>
+			<div class="col-md-5 my-2">
+				<form method="POST">
+					{% csrf_token %}
+					{{order_form.as_p}}
+					<button class="btn-sm btn-danger" type="submit">Order Now</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+
+{% block JS %}
+ 
+{% endblock JS %}

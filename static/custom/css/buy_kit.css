@@ -1,0 +1,13 @@
+.product_buy {
+  position: relative; }
+
+.order-form {
+  background-color: radial-gradient(rgba(64, 156, 165, 0.5) e, rgba(201, 222, 207, 0.8)); }
+
+select#id_payment_method {
+  width: 72px;
+  height: 34px;
+  padding: 5px;
+  margin-left: 5px; }
+
+/*# sourceMappingURL=buy_kit.css.map */

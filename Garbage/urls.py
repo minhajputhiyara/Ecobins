@@ -13,6 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomeView,name='homepage'),
     path('accounts/',include('accounts.urls')),
+    path('cleaning_kit/',include('cleaning_kit.urls')),
     path('upload_garbage/',UploadGarbageView,name='upload_garbage'),
     path('upload_garbage/<int:id>/',UploadGarbageView,name='upload_garbage'),
     path('display_garbage/',DisplayWasteView,name='display_garbage'),
