@@ -9,7 +9,7 @@ from .models import  MyUser
 from management.views import Garbage
 from management.forms import ProductUploadForm
 from management.models import GarbageOrder
-
+from compain_and_notification.models import Notification
 def HomeView(request):
 
     return render(request,'base.html')
@@ -95,7 +95,8 @@ def ProfileView(request,id=None):
         order_list=GarbageOrder.objects.filter(ordered_by=id)
        # context['ordered_garbage']=order_list
         context['abc']=order_list
-
+    notification=Notification.objects.filter(author=request.user).count()
+    context['notification']=notification
     return render(request,'accounts/user_profile.html',context)
 
 

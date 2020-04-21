@@ -5,6 +5,9 @@ from accounts.views import HomeView,SignUpView
 from management.views import (UploadGarbageView,DisplayWasteView,
         BuyGarbageView,CleanerView,CleanerDetailView)
 
+from compain_and_notification.views import (ComplainView,NotificationView
+    ,DeleteNotification)
+
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -20,6 +23,9 @@ urlpatterns = [
     path('buy_garbage/<slug:slug>/<int:id>/',BuyGarbageView,name='buy_garbage'),
     path('cleaner/',CleanerView,name='cleaner'),
     path('cleaner_details/<int:id>/',CleanerDetailView,name='cleaner_details'),
+    path('complain/<int:id>/',ComplainView,name="complain"),
+    path('notifications/<int:id>/',NotificationView,name="notifications"),
+    path('delete_notification/<int:id>/',DeleteNotification,name="delete_notification"),
 ]
 
 if settings.DEBUG:

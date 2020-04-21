@@ -11,6 +11,19 @@
 
 <div class="user_profile my-5">
 
+    <div class="row">
+        <div class="col-md-6 offset-md-3"> 
+          {% if messages %}
+            {% for message in messages %}
+        
+              <div class="alert alert-{{message.tags}} text-center messages" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+    </div>
+
     <div class="container card profile_card">
         <div class="row">
             <div class="col col-sm-6 col-md-6 p-3">
@@ -24,7 +37,7 @@
                         {% endif %}
                     </p>
                     <p class="btn btn-sm btn-warning"><a href="{% url 'signup' myuser.id %}"><i class="fa fa-pencil"></i> Edit Profile</a></p>
-                    <p class="btn btn-sm btn-danger"><a href=""><i class="fa fa-pencil"></i>Complain</a></p>
+                    <p class="btn btn-sm btn-danger"><a href="{% url 'complain' myuser.id %}"><i class="fa fa-pencil"></i>Complain</a></p>
                     <p class=""><i class="fa fa-address-card"></i> {{myuser.email}}</p>
                     <p class=""><i class="fa fa-mobile"></i> {{myuser.contact}}</p>
                     <p class=""><i class="fa fa-building"></i> {{myuser.address}}</p>
@@ -32,8 +45,7 @@
             </div>
 
             <div class="col col-sm-6 col-md-6 p-3">
-   
-                <h3 class="text-secondary"><i class="fa fa-bell"></i> Notification </h3>
+                <p class="btn btn-sm btn-success"><a href="{% url 'notifications' myuser.id %}"><i class="fa fa-bell"></i> <span class="badge badge-warning">{{notification}}</span> Notification </a></p>
             </div>
         </div>
 
@@ -107,7 +119,6 @@
     </div>
 </div>
 {% endblock content %}
-
 
 
 {% block JS %}

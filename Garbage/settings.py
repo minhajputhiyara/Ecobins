@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'management',
     'cleaning_kit',
+    'compain_and_notification',
     'django_cleanup',
 ]
 AUTH_USER_MODEL = 'accounts.MyUser'
