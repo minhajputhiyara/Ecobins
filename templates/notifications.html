@@ -36,8 +36,8 @@
                     <tr>
                         <td>{{notification.title}}</td>
 
-                        <td class=""><a class='btn btn-warning btn-xs' href="">Details</a></td>
-                        <td class=""><a href="{% url 'delete_notification' notification.id %}" class="btn btn-danger btn-xs">  Del</a></td>
+                        <td class=""><a class='btn btn-warning btn-xs' href="{% url 'notification_details' notification.id %}">Details</a></td>
+                        <td class=""><a href="{% url 'delete_notification' notification.id %}" class="btn btn-danger btn-xs">Delete</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -39,3 +39,10 @@ def DeleteNotification(request,id=None):
     instance.delete()
     messages.add_message(request, messages.SUCCESS,  'One notification deleted successfully')
     return redirect('homepage')
+
+
+def NotificationDetails(request,id=None):
+    context=dict()
+    notification=Notification.objects.get(pk=id)
+    context['notification']=notification
+    return render(request,'notification_details.html',context)
