@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path,include
 from accounts.views import HomeView,SignUpView
 from management.views import (UploadGarbageView,DisplayWasteView,
-        BuyGarbageView,CleanerView,CleanerDetailView)
+        BuyGarbageView,CleanerView,CleanerDetailView
+        ,AboutUs)
 
 from compain_and_notification.views import (ComplainView,NotificationView
     ,DeleteNotification,NotificationDetails)
@@ -15,6 +16,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomeView,name='homepage'),
+    path('about_us/',AboutUs,name="about_us"),
     path('accounts/',include('accounts.urls')),
     path('cleaning_kit/',include('cleaning_kit.urls')),
     path('upload_garbage/',UploadGarbageView,name='upload_garbage'),

@@ -100,3 +100,9 @@ def CleanerDetailView(request,id=None):
     cleaner=Cleaner.objects.get(pk=id)
     context['cleaner']=cleaner
     return render(request,'cleaner_details.html',context)
+
+
+
+def AboutUs(request):
+
+    return render(request,'about.html',)

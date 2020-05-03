@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'custom/css/about.css' %}">
+{% endblock CSS%}
+
+
+{% block content %}
+    <div class="container my-5">
+ 
+              <main class="main-grid">
+                      <div class="head">
+                      <h1 class="page-title">About us</h1>
+                      <p class="subtitle">We are specialsts in web development. Creativity and fun are our ingredients for awesome work.</p>
+                      </div>
+                      <img class="main-image" src="{% static 'custom/image/about_page.jpeg' %}" alt="garbage">
+                      
+                      <div class="main-text">
+                          <h2 class="section-title">What is Dump Yard ?</h2>
+                          <p>We represent you the online platform for you to sell your waste and make money. Your waste will not
+                            be waste anymore. Now you can easily find buyers for your waste. We encourage selling categorized
+                            waste only. Don’t throw or dump your garbage here and there dump it here and get rewarded. </p>
+                          
+                          <h2 class="section-title sub">Why Dump Yard ?</h2>
+                          <p>Categorization is the first step of garbage recycling. The buyer can avail the categorized waste from our
+                            platform that will reduce their categorization cost. They also can easily find their required waste product
+                            and make deals with the seller.
+                            The recycle center can also find the garbage as pre-categorized and directly can make deals with the
+                            seller. They will not have any categorization or separation cost. They will get their required product
+                            ready to recycle.
+                          </p>
+                      </div>
+                
+              </main>
+
+    </div>
+{% endblock content%}
+
+{% block JS %}
+<script src="{% static 'custom/js/about.js' %}"></script>
+{% endblock JS %}

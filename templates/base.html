@@ -26,12 +26,12 @@
     {% endblock CSS %}
   </head>
 
-  <body style="background-image: url({% static 'custom/image/1.jpg' %}); background-repeat: no-repeat , repeat;background-color: black;">
+  <body style="background-image: url({% static 'custom/image/background.jpg' %}); background-repeat: no-repeat , repeat;background-color: black;">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'homepage' %}">  <img class="img-logo" src="{% static 'custom/image/Logo.png' %}" alt=""></a> <h1 style="color:skyblue; font-family: Comic Sans MS;">CROW </h1> <br> <p id="typing1">Stay Clean</p>
+        <a class="navbar-brand" href="{% url 'homepage' %}">  <img class="img-logo" src="{% static 'custom/image/Logo.png' %}" alt=""></a> <h1 style="color:skyblue; font-family: Comic Sans MS;">Dump Yard</h1> <br> <p id="typing1">Stay Clean</p>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,11 +42,11 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">About Us
+              <a class="nav-link" href="{% url 'about_us' %}">About Us
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Contact Us
+              <a class="nav-link" href="#contact_us">Contact Us
               </a>
             </li>
             {% if user.is_authenticated %}
@@ -214,7 +214,7 @@
     {% endblock content %}
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer id="contact_us" class="py-5 bg-dark">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
@@ -225,9 +225,9 @@
           <div class="col-lg-3">
             </div>
             <div class="col-lg-3">
-                 <i class="fas fa-landmark" aria-hidden="true" style="color:white;"></i> <p style="color:white;">House-115, Rd no. 7, Block- D, Dhaka 1213</p>
-                 <i class="fas fa-phone" aria-hidden="true" style="color:white;"></i> <p style="color:white;">162472</p>
-                 <i class="fas fa-at" aria-hidden="true" style="color:white;"></i> <p style="color:white;">crow_stay_clean@gmail.com</p>
+                 <i class="fa fa-landmark" aria-hidden="true" style="color:white;"></i> <p style="color:white;">House-115, Rd no. 7, Block- D, Dhaka 1213</p>
+                 <i class="fa fa-phone" aria-hidden="true" style="color:white;"></i> <p style="color:white;">162472</p>
+                 <i class="fa fa-envelope" aria-hidden="true" style="color:white;"></i> <p style="color:white;">dumpyardclean@gmail.com</p>
               </div>
         </div>        
       </div>
