@@ -20,7 +20,7 @@
              <div class="container">
                  <div class="row">
                     <!-- Single Garbage -->
-                    {%for _ in loop_times %}
+
                     {% for garbage in garbages %}
                          <div class="col-xs-12 col-sm-4 col-md-4">
                          <div class="card">
@@ -43,11 +43,15 @@
                                    <a href="{% url 'buy_garbage' garbage.slug garbage.id %}">
                                         <button id="detail_btn" class="btn btn-info my-3">Buy</button>
                                    </a>
+
+                                   <!-- Some update is here -->
+
+                                   <!-- End some  -->
                               </div>
                          </div>
                          </div> 
                     {% endfor %}
-                    {% endfor %}
+
                      <!-- End Single Garbage -->
                  </div>
              </div>
