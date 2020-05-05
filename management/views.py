@@ -69,12 +69,6 @@ def BuyGarbageView(request,slug=None,id=None):
     context=dict()
     garbage=Garbage.objects.get(pk=id)
     owner=MyUser.objects.get(pk=garbage.uploaded_by)
-    garbage.status=False
-    garbage.save()
-
-    obj=Garbage.objects.get(pk=id)
-    if  GarbageOrder.objects.filter(ordered_by=request.user.id,ordered_garbage=obj).count()==0:
-        GarbageOrder.objects.create(ordered_by=request.user.id,ordered_garbage=obj)
 
     context['garbage']=garbage
     context['owner']=owner
@@ -106,3 +100,14 @@ def CleanerDetailView(request,id=None):
 def AboutUs(request):
 
     return render(request,'about.html',)
+
+@login_required
+def GarbageOrderView(request,slug=None,id=None):
+
+    obj=Garbage.objects.get(pk=id)
+    obj.status=False
+    obj.save()
+    if  GarbageOrder.objects.filter(ordered_by=request.user.id,ordered_garbage=obj).count()==0:
+        GarbageOrder.objects.create(ordered_by=request.user.id,ordered_garbage=obj)
+        messages.add_message(request, messages.SUCCESS,  'Your Order Recieved Successfully')
+    return redirect('homepage')

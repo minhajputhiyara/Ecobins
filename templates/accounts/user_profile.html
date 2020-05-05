@@ -36,8 +36,8 @@
                         <span class="badge badge-success">Buyer</span>
                         {% endif %}
                     </p>
+                    
                     <p class="btn btn-sm btn-warning"><a href="{% url 'signup' myuser.id %}"><i class="fa fa-pencil"></i> Edit Profile</a></p>
-                    <p class="btn btn-sm btn-danger"><a href="{% url 'complain' myuser.id %}"><i class="fa fa-pencil"></i>Complain</a></p>
                     <p class=""><i class="fa fa-address-card"></i> {{myuser.email}}</p>
                     <p class=""><i class="fa fa-mobile"></i> {{myuser.contact}}</p>
                     <p class=""><i class="fa fa-building"></i> {{myuser.address}}</p>

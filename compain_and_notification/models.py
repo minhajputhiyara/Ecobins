@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 
-
+'''
 class Complain(models.Model):
 
     author = models.ForeignKey(
@@ -20,7 +20,7 @@ class Complain(models.Model):
     #calling image compression function before saving the data
     def save(self, *args, **kwargs):
         super(Complain,self).save(*args, **kwargs)
-
+'''
 class Notification(models.Model):
 
     author = models.ForeignKey(

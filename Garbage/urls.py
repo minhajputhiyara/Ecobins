@@ -4,9 +4,9 @@ from django.urls import path,include
 from accounts.views import HomeView,SignUpView
 from management.views import (UploadGarbageView,DisplayWasteView,
         BuyGarbageView,CleanerView,CleanerDetailView
-        ,AboutUs)
+        ,AboutUs,GarbageOrderView)
 
-from compain_and_notification.views import (ComplainView,NotificationView
+from compain_and_notification.views import (NotificationView
     ,DeleteNotification,NotificationDetails)
 
 from django.conf import settings
@@ -23,10 +23,11 @@ urlpatterns = [
     path('upload_garbage/<int:id>/',UploadGarbageView,name='upload_garbage'),
     path('display_garbage/',DisplayWasteView,name='display_garbage'),
     path('buy_garbage/<slug:slug>/<int:id>/',BuyGarbageView,name='buy_garbage'),
+    path('conrifm_order/<slug:slug>/<int:id>/',GarbageOrderView,name='conrifm_order'),
     path('cleaner/',CleanerView,name='cleaner'),
     path('cleaner_details/<int:id>/',CleanerDetailView,name='cleaner_details'),
     
-    path('complain/<int:id>/',ComplainView,name="complain"),
+   # path('complain/<int:id>/',ComplainView,name="complain"),
     path('notifications/<int:id>/',NotificationView,name="notifications"),
     path('delete_notification/<int:id>/',DeleteNotification,name="delete_notification"),
     path('notification_details/<int:id>/',NotificationDetails,name='notification_details'),

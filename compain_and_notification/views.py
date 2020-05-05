@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import ComplainForm
+#from .forms import ComplainForm
 from .models import Notification
 # Create your views here.
-
+'''
 @login_required
 def ComplainView(request,id=None):
 
@@ -21,7 +21,7 @@ def ComplainView(request,id=None):
     form=ComplainForm()
     context['complain_form']=form
     return render(request,'complain.html',context)
-
+'''
 
 
 @login_required
