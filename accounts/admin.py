@@ -1,6 +1,5 @@
 from django.contrib.admin import AdminSite
-from django.utils.translation import ugettext_lazy
-
+from django.utils.translation import gettext_lazy
 
 from django.contrib import admin
 from django.contrib.auth.models import Group
