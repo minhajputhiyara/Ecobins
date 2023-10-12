@@ -74,7 +74,7 @@ def LoginView(request):
         if user is not None:
             login(request,user)
             messages.add_message(request, messages.SUCCESS,  'You are successfully logged in !!!')
-        return redirect('homepage')
+        return redirect('profile',id=user.id)
     else:
         form=LoginForm()
         context['login_form']=form
